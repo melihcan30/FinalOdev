@@ -1,8 +1,9 @@
-#include "m3.h"
-#include "iostream"
+#include "m3.h" // ../Header Files/m3.h klasör dizinindeki m3.h isimli kod sayfasýna eriþimi saðlamak
+#include "iostream" //iosstream kütüphanesini ekler.
 
-using namespace std;
+using namespace std; //Tüm program boyunca bütün fonsiyonlara eriþime olanak saðladý.
 
+//Pcb'ni parameterini tanýmladýk.
 Pcb::Pcb(int inputBase, int inputLimit)
 {
     this->baseAdress = inputBase;
@@ -27,6 +28,7 @@ Pcb::~Pcb()
 
 }
 
+//Node'un parametrelerini tanýmladýk.
 Node::Node(int inputPid, const char* inputPath, const char* inputFileName, int base, int limit)
 {
     this->left = nullptr;
@@ -74,6 +76,7 @@ int Node::getPID()
     return this->PID;
 }
 
+//Node'u yýkýma uðratýr. 
 Node::~Node()
 {
     this->left = nullptr;
@@ -255,7 +258,7 @@ List::~List()
 
 }
 
-
+//main'e yani programý çalýþtýrdýðýmýzda ekrana yazdýrýlacak fonksiyon
 int main(int argc, char* argv[])
 {
     int ekle = 0, cikar = 1;
@@ -268,6 +271,7 @@ int main(int argc, char* argv[])
 
     //int size = list->getSize();
 
+    //Ekrana yazdýrdýðýmýz kodlar
     list->CreateProcess(new Node(1, "evde", "file1", 10000, list->limits[2]));
     list->CreateProcess(new Node(2, "iste", "file2", 20000, list->limits[1]));
     list->CreateProcess(new Node(3, "evde", "file1", 30000, list->limits[3]));
@@ -283,5 +287,7 @@ int main(int argc, char* argv[])
     list->CreateProcess(new Node(13, "iste", "file2", 13000, list->limits[1]));
     list->print(ekle);
     //cout << selected->getPID() << "       " << selected->getPcb()->getBaseAddress() << "             " << selected->getPcb()->getLimit() << "            " << endl << endl;
+    
+    //list'i silinir.
     delete list;
 }
